@@ -7,6 +7,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Flow <strong>Overstack</strong></a>
+      </div>
+      <ul class="nav navbar-nav">
+		<li><a>correo</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">Sign Up</a></li>
+        <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+      </form>
+      </ul>
+      
+    </div>
+  </nav>
+
 
   <body>
     <%= yield %>
