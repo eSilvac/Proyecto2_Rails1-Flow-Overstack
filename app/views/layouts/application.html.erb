@@ -10,14 +10,20 @@
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Flow <strong>Overstack</strong></a>
+      	<%= link_to "Flow <strong>Overstack</strong>".html_safe, questions_path, class:"navbar-brand" %>
+
       </div>
       <ul class="nav navbar-nav">
-		<li><a>correo</a></li>
+		<li><a class="inbox"><%= fa_icon "inbox lg" %></a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log In</a></li>
-        <li><a href="#">Sign Up</a></li>
+      	<% if user_signed_in? %>
+      		<li><p class="navbar-text"><%= current_user.username %></p></li>
+      		<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+      	<% else %>
+      		<li><%= link_to "Login", new_user_session_path %></li>
+        	<li><%= link_to "Sign Up", new_user_registration_path %></li>
+      	<% end %>
         <form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">

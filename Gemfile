@@ -19,6 +19,8 @@ gem 'bootstrap-sass', '~> 3.3.4'
 
 gem 'redcarpet'
 
+gem 'devise'
+
 gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

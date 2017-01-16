@@ -8,6 +8,9 @@ $bgHighlight    : #373738;
 $colDefault     : #ffffff;
 $colHighlight   : #fdfdfd;
 $dropDown       : false;
+
+.inbox{
+	font-size: 16px;}
 .navbar-default {
   height: 40px;
   background-color: $bgDefault;
@@ -23,7 +26,8 @@ $dropDown       : false;
       > a {
         color: $colDefault;
         &:hover,  &:focus {
-          color: $colHighlight; }}
+          color: $colHighlight; }
+      	}
       @if $dropDown {
         > .dropdown-menu {
           background-color: $bgDefault;
