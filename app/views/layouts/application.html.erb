@@ -3,7 +3,7 @@
   <head>
     <title>FlowOverstack</title>
     <%= csrf_meta_tags %>
-
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -33,9 +33,28 @@
       
     </div>
   </nav>
-
-
+  <br>
   <body>
-    <%= yield %>
+  	<div class="container">
+      <div class="row" id="first-part">
+          <div class="col-xs-6" id="title-line">
+              <%= link_to questions_path, class:"link-to" do %>
+                  <%= image_tag("https://s3.amazonaws.com/flow-overstack-esilva/photo_2017-01-17_00-11-08.jpg", size:"36x39", class:"image")%>
+                  <span class="name">Flow <strong>Overstack</strong></span>
+              <% end %>
+          </div>
+          <div class="col-xs-6" id="title-buttons">
+              <div class="text-right">
+                  <%= link_to "<strong>Preguntas</strong>".html_safe, questions_path, class:"btn btn-default" %>
+                  <%= link_to "<strong>Usuarios</strong>".html_safe, questions_path, class:"btn btn-default" %>
+                  <%= link_to "<strong>Hacer Una Pregunta</strong>".html_safe, new_question_path, class:"btn btn-default" %>
+              </div>
+          </div>
+      </div>
+
+      <br>
+
+  		<%= yield %>
+    </div>
   </body>
 </html>

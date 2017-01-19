@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "questions.scss";
 
 
 $bgDefault      : #232425;
@@ -75,4 +76,7 @@ $dropDown       : false;
       > a, > a:hover, > a:focus {
         color: $colHighlight;
         background-color: $bgHighlight; }}}
+}
+body{
+	font-family: 'Source Sans Pro', sans-serif;
 }

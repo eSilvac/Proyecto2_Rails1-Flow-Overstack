@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1" id="adv">
+		<p class="text-center">Recuerda que antes de publicar una pregunta, otros usuarios pudieron tener la misma duda, busca muy bien antes de pregutar!</p>
+	</div>
+</div>
+
+<div class="row" id="formulario">
+	<div class="col-xs-7 ">
+		<br>
+		<% if @question.errors.any? %>
+		  <div class="alert alert-danger">
+		    <ul>
+		    <% @post.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+
+		<%= form_for @question do |f| %>
+			<div class="form-group">
+				<h3>Titulo</h3>
+				<%= f.text_field :title, class: "form-control input-lg", placeholder: "Cual es el titulo de tu pregunta?" %>
+			</div>
+			<div class="form-group">
+				<h3>Pregunta</h3>
+				<%= f.text_area :body, rows:"10", class: "form-control input-lg", placeholder: "Pon aquí todos los detalles de tu pregunta." %>
+			</div>
+
+			<div>
+				<%= f.submit form_title, class: "btn btn-info btn-lg", id:"boton" %>
+			</div>
+		<% end %>
+	</div>
+
+	<div class="col-xs-4 col-xs-offset-1" id="help">
+		<h3>Tips!</h3>
+		<p> <%= markdown("El area de texto soporta **Markdown**, así que aca tienes algunos concejos:") %></p>
+		<ul>
+			<li><%= markdown("Si quieres **negrillas**, ** Pon la frase así **") %></li>
+			<li><%= markdown("Si quieres *curvas*, * Pon la frase así *")%></li>
+			<li><%= markdown("Si quieres _subrayar_, _ Pon la frase así _")%></li>
+			<li><%= markdown("**_Tambien puedes combinar_**,*_si lo necesitas_*")%></li>
+			<li><%= markdown("Si quieres `codigo`, Pon la frase así entre ` .")%></li>
+			<li>Si tienes muchas lineas de codigo: <br>```[Lenguaje del codigo] <br> <--Tu codigo--> <br> ```</li>
+		</ul>
+		<p class="text-right"><%= link_to "Aca puedes encontrar mas opciones de markdown >>", "https://learn.getgrav.org/content/markdown", :target => "_blank" %></p>
+	</div>
+</div>

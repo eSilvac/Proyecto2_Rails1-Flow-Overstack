@@ -1,3 +1,54 @@
-// Place all the styles related to the questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.container{
+	#adv{
+		border-radius: 6px;
+		font-size: 17px;
+		padding: 15px;
+		background-color: #ABA9A6;
+		p{
+			margin-bottom: 0;}}
+	#first-part{
+		margin-bottom: 25px;
+		#title-line{
+			font-size: 33px;
+			height: 40px;
+			.link-to{
+				text-decoration: none;
+				color: black;		
+				&:hover{
+					color:black;}
+
+				.image{
+					margin-bottom: 20px;}}}
+		#title-buttons{
+			height: 40px;
+			padding-right: 0;
+			.btn{
+				border:0;
+				border-radius: 2px;
+				font-size: 15px;
+				background-color: #9E9C9B;
+				margin-top: 5px;
+				margin-left: 3px;
+				&:hover{
+					background-color:#F6A03A ;
+					webkit-transition: all .5s;
+    				-moz-transition: all .5s;
+    				transition: all .5s;}}}}	
+    #questions{
+		#question-body{
+			margin-top: 10px;
+			border-bottom: 1px solid #C3C1BF;
+			padding: 5px 0;}
+		hr{
+    		border-color: #C3C1BF;}
+		h3, h4{
+			margin-top:0;}}
+
+	#formulario{
+		font-size: 16px;	
+		#help{
+			margin-top: 45px;
+			background-color:#FAEFBB;
+		}
+	}
+}
