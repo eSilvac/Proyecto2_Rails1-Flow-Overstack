@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="col-xs-12">
+		<h2><%= @question.title %></h2>
+	</div>
+	<br>
+	<hr class="style1">
+	
+</div>
+
+<div class="row" id="show-part">
+	<div class="col-xs-7">
+		<div class="row">
+			<div class="col-xs-2" id="vote-question">
+				<h3 class="text-center">up</h3>
+
+				<h3 class="text-center">0</h3>
+
+				<h3 class="text-center">down</h3>
+
+				<br>
+
+				<h3 class="text-center">star</h3>
+			</div>
+
+			<div class="col-xs-10" id="question">
+				<div class="col-xs-12">
+					<p class="post-body"><%= markdown(@question.body).html_safe %></p>
+				</div>
+				
+				<div class="col-xs-9" id="post-edit">
+					<%= link_to "Editar", edit_question_path(@question) %>
+				</div>
+
+				<div class="col-xs-3" id="post-user">
+					<p>Fecha</p>
+					<p><%= @question.user.username %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-5">
+		
+	</div>
+</div>

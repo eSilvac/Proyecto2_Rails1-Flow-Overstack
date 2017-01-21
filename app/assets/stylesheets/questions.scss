@@ -1,3 +1,9 @@
+hr{
+  		border-top: 0.5px solid grey;
+  		width: 97.5%;}
+p{
+	word-wrap: break-word;
+}
 .container{
 	#adv{
 		border-radius: 6px;
@@ -6,6 +12,7 @@
 		background-color: #ABA9A6;
 		p{
 			margin-bottom: 0;}}
+	
 	#first-part{
 		margin-bottom: 25px;
 		#title-line{
@@ -39,16 +46,41 @@
 			margin-top: 10px;
 			border-bottom: 1px solid #C3C1BF;
 			padding: 5px 0;}
-		hr{
-    		border-color: #C3C1BF;}
+		.title{
+			text-decoration: none;
+			color: black;
+			&:hover{
+				color:black;}}
 		h3, h4{
 			margin-top:0;}}
-
 	#formulario{
 		font-size: 16px;	
 		#help{
 			margin-top: 45px;
-			background-color:#FAEFBB;
+			background-color:#FAEFBB;}}
+	
+
+	#show-part{
+		#question{
+
+			.post-body{
+				margin-bottom: 25px;}
+			p{
+				font-size:18px;
+				margin-bottom: 5px;}
+			#post-edit{
+				padding: 0;
+				a{
+					color: black;
+					text-decoration: none;}}
+			#post-user{
+				padding: 5px 8px;
+				border-radius: 3px;
+				background-color: #C2FEFC;
+				p{
+					margin-bottom: 5px;
+				}
+			}
 		}
 	}
 }
