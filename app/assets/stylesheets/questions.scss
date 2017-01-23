@@ -61,19 +61,37 @@ p{
 	
 
 	#show-part{
+		#vote-question{
+			height: 3px;
+			h3{
+				margin: 0;}
+			a{
+				text-decoration: none;
+				color: black;}
+			p{
+				margin-bottom: 2px;}
+			.vote-touch{
+				color:#F6A03A;
+			}
+			.vote-normal{
+				color: #9E9C9B;
+			}
+		}
+
 		#question{
 
-			.post-body{
-				margin-bottom: 25px;}
-			p{
-				font-size:18px;
-				margin-bottom: 5px;}
+			#post-body{
+				margin-bottom: 25px;
+				p{
+					font-size:18px;
+					margin-bottom: 5px;}}
 			#post-edit{
-				padding: 0;
+				
 				a{
 					color: black;
 					text-decoration: none;}}
 			#post-user{
+				font-size: 14px;
 				padding: 5px 8px;
 				border-radius: 3px;
 				background-color: #C2FEFC;

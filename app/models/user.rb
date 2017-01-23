@@ -24,6 +24,7 @@ class User < ApplicationRecord
 	attr_accessor :login
 
 	has_many :questions
+	has_many :votes
 
 	validates :username,
 	:presence => true,

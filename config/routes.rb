@@ -4,5 +4,8 @@ Rails.application.routes.draw do
 
 	root 'questions#index'
 
-	resources :questions
+	resources :questions do
+		resources :votes, only: [:create,:destroy]
+		resources :unvotes, only: [:create,:destroy]
+	end
 end

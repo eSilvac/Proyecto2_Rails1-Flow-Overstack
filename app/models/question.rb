@@ -10,5 +10,16 @@
 #
 
 class Question < ApplicationRecord
+	has_many :votes
+	has_many :unvotes
+	
 	belongs_to :user
+
+  
+	def voted_by?(user)
+  		votes.exists?(user: user)
+  	end
+  	def unvoted_by?(user)
+  		unvotes.exists?(user: user)
+  	end
 end

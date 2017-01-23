@@ -11,11 +11,35 @@
 	<div class="col-xs-7">
 		<div class="row">
 			<div class="col-xs-2" id="vote-question">
-				<h3 class="text-center">up</h3>
 
-				<h3 class="text-center">0</h3>
+				<% if  @question.voted_by? current_user %>
+						<p class="text-center"><%= link_to (fa_icon "caret-up 3x"), question_vote_path(@question), method: :delete, class:"vote-touch" %></p>
 
-				<h3 class="text-center">down</h3>
+						<h3 class="text-center"><%= @question.votes.count - @question.unvotes.count%></h3>
+
+						<p class="text-center"><%= link_to (fa_icon "caret-down 3x"), question_unvotes_path(@question), method: :post, class:"vote-normal" %></p>
+
+					<% else %>
+
+						<% if  @question.unvoted_by? current_user %>
+							<p class="text-center"><%= link_to (fa_icon "caret-up 3x"), question_votes_path(@question), method: :post, class:"vote-normal" %></p>
+
+							<h3 class="text-center"><%= @question.votes.count - @question.unvotes.count%></h3>
+
+							<p class="text-center"><%= link_to (fa_icon "caret-down 3x"), question_unvote_path(@question), method: :delete, class:"vote-touch" %></p>
+
+						<% else %>
+								<p class="text-center"><%= link_to (fa_icon "caret-up 3x"), question_votes_path(@question), method: :post, class:"vote-normal" %></p>
+
+								<h3 class="text-center"><%= @question.votes.count - @question.unvotes.count%></h3>
+
+								<p class="text-center"><%= link_to (fa_icon "caret-down 3x"), question_unvotes_path(@question), method: :post, class:"vote-normal" %></p>
+						<% end %>
+
+
+				<% end %>
+
+				
 
 				<br>
 
@@ -23,10 +47,10 @@
 			</div>
 
 			<div class="col-xs-10" id="question">
-				<div class="col-xs-12">
-					<p class="post-body"><%= markdown(@question.body).html_safe %></p>
+				<div class="col-xs-12" id="post-body">
+					<p ><%= markdown(@question.body).html_safe %></p>
 				</div>
-				
+				<hr>
 				<div class="col-xs-9" id="post-edit">
 					<%= link_to "Editar", edit_question_path(@question) %>
 				</div>
@@ -35,7 +59,7 @@
 					<p>Fecha</p>
 					<p><%= @question.user.username %></p>
 				</div>
-			</div>
+			</div>		
 		</div>
 	</div>
 
