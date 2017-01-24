@@ -3,7 +3,7 @@ class VotesController < ApplicationController
 	def create
 		vote = Vote.create(user: current_user)
 		question = Question.find(params[:question_id])
-		if question.unvotes.where(user: current_user).exists?
+		if question.unvoted_by? (current_user)
 			question.unvotes.where(user: current_user).take.try(:destroy)
 		end
 		question.votes << vote

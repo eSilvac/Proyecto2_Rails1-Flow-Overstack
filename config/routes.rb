@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 	resources :questions do
 		resources :votes, only: [:create,:destroy]
 		resources :unvotes, only: [:create,:destroy]
+		resources :comments, only: [:create,:destroy]
 	end
 end

@@ -1,9 +1,12 @@
-hr{
+hr.style1{
   		border-top: 0.5px solid grey;
   		width: 97.5%;}
+hr.style2{
+  		border-top: 0.5px solid #E0E1E1;
+  		margin: 10px 0;
+  		width: 100%;}
 p{
-	word-wrap: break-word;
-}
+	word-wrap: break-word;}
 .container{
 	#adv{
 		border-radius: 6px;
@@ -61,32 +64,28 @@ p{
 	
 
 	#show-part{
-		#vote-question{
-			height: 3px;
-			h3{
-				margin: 0;}
-			a{
-				text-decoration: none;
-				color: black;}
-			p{
-				margin-bottom: 2px;}
-			.vote-touch{
-				color:#F6A03A;
-			}
-			.vote-normal{
-				color: #9E9C9B;
-			}
-		}
-
+		
 		#question{
-
+			#vote-question{
+				height: 3px;
+				h3{
+					margin: 0;}
+				a{
+					text-decoration: none;
+					color: black;}
+				p{
+					margin-bottom: 2px;}
+				.vote-touch{
+					color:#F6A03A;}
+				.vote-normal{
+					color: #9E9C9B;}}
 			#post-body{
 				margin-bottom: 25px;
 				p{
 					font-size:18px;
 					margin-bottom: 5px;}}
 			#post-edit{
-				
+				padding: 0;
 				a{
 					color: black;
 					text-decoration: none;}}
@@ -95,9 +94,31 @@ p{
 				padding: 5px 8px;
 				border-radius: 3px;
 				background-color: #C2FEFC;
+				margin-bottom: 20px;
 				p{
-					margin-bottom: 5px;
-				}
+					margin-bottom: 5px;}}
+
+			#comments{
+				padding: 10px 0 7px;
+				border-bottom: 0.5px solid #E0E1E1;
+				a{
+					text-decoration: none;
+					color: black;
+					&:hover{
+						color:#F6A03A;}}}
+			#form-comment{
+				padding: 0;
+				#text{
+					resize: none;}
+				.btn{
+					background-color: #9E9C9B;
+					&:hover{
+						background-color:#F6A03A ;}}
+				a{
+					text-decoration: none;
+					color: black;
+					&:hover{
+						color:#F6A03A;}}
 			}
 		}
 	}

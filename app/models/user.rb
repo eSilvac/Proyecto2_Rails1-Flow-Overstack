@@ -25,6 +25,7 @@ class User < ApplicationRecord
 
 	has_many :questions
 	has_many :votes
+	has_many :comments
 
 	validates :username,
 	:presence => true,
