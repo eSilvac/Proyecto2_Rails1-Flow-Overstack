@@ -77,10 +77,13 @@ p{
 					margin-bottom: 2px;}
 				.vote-touch{
 					color:#F6A03A;}
-				.vote-normal{
-					color: #9E9C9B;}}
+				.vote-normal , .fav-normal{
+					color: #9E9C9B;}
+				.fav-touch{
+					color: #F8D537;}}
 			#post-body{
 				margin-bottom: 25px;
+				padding: 0;
 				p{
 					font-size:18px;
 					margin-bottom: 5px;}}
@@ -99,7 +102,7 @@ p{
 					margin-bottom: 5px;}}
 
 			#comments{
-				padding: 10px 0 7px;
+				padding: 10px 0 7px 20px;
 				border-bottom: 0.5px solid #E0E1E1;
 				a{
 					text-decoration: none;

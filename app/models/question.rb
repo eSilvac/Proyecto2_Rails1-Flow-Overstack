@@ -13,6 +13,7 @@ class Question < ApplicationRecord
 	has_many :votes
 	has_many :unvotes
 	has_many :comments
+	has_many :favorites
 
 	belongs_to :user
 
@@ -22,5 +23,8 @@ class Question < ApplicationRecord
   	end
   	def unvoted_by?(user)
   		unvotes.exists?(user: user)
+  	end
+  	def favorite_by?(user)
+  		favorites.exists?(user: user)
   	end
 end
