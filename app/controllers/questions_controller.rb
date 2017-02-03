@@ -12,6 +12,7 @@ class QuestionsController < ApplicationController
   	def create
   		@question = Question.create(question_params)
   		@question.user = current_user
+      @question.views = 0
   		if @question.save
   			redirect_to questions_path
   		else
@@ -21,6 +22,8 @@ class QuestionsController < ApplicationController
 
   	def show
   		@question = Question.find(params[:id])
+      @question.update(views:@question.views += 1)
+      
   	end
 
   	def edit

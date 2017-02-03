@@ -14,6 +14,7 @@ class Question < ApplicationRecord
 	has_many :unvotes
 	has_many :comments
 	has_many :favorites
+	has_many :answers
 
 	belongs_to :user
 
