@@ -2,6 +2,7 @@ class UnvotesController < ApplicationController
 	before_action :authenticate_user!
 
 	def create
+		question = Question.find(params[:question_id])
 		if params[:answer_id].present?
 			answer = Answer.find(params[:answer_id])
 			answer.unvotes.create(user: current_user)
@@ -10,23 +11,26 @@ class UnvotesController < ApplicationController
 			end
 
 		else
-			question = Question.find(params[:question_id])
 			question.unvotes.create(user: current_user)
 			if question.voted_by? (current_user)
 				question.votes.where(user: current_user).take.try(:destroy)
 			end
 		end
-		redirect_to Question.find(params[:question_id])
+		question.update(views:question.views -= 1)
+
+		redirect_to question
 	end
 
 	def destroy
+		question = Question.find(params[:question_id])
 		if params[:answer_id].present?
 			answer = Answer.find(params[:answer_id])
 			answer.unvotes.where(user: current_user).take.destroy
 		else
-			question = Question.find(params[:question_id])
 			question.unvotes.where(user: current_user).take.destroy
 		end
-		redirect_to Question.find(params[:question_id])
+
+		question.update(views:question.views -= 1)
+		redirect_to question
 	end
 end

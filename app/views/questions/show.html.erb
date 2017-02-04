@@ -214,7 +214,7 @@
 
 
 
-	$('textarea').keyup(function (e) {
+	$('textarea[id="text"]').keyup(function (e) {
 	    var rows = $(this).val().split("\n");
 	    $(this).prop('rows', rows.length);
 	});

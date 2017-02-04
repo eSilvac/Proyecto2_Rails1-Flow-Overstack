@@ -4,7 +4,7 @@ class AnswersController < ApplicationController
 	def create
     	question = Question.find(params[:question_id])
     	question.answers.create(answer_params)
-
+        question.update(views:question.views -= 1)
     	redirect_to question
     end
 
@@ -12,6 +12,7 @@ class AnswersController < ApplicationController
     	question = Question.find(params[:question_id])
     	answer = question.answers.find(params[:id])
     	answer.destroy
+        question.update(views:question.views -= 1)
     	redirect_to question
     end
 
