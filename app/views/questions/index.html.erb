@@ -2,19 +2,20 @@
     <% @questions.each do |question| %>
         <div class="col-xs-12" id="question-body">
             <div class="col-xs-1">
-                <h3 class="text-center">0</h3>
+                <h3 class="text-center"><%= question.votes.count - question.unvotes.count %></h3>
                 <p class="text-center">Votos</p>
             </div>
             <div class="col-xs-1">
-                <h3 class="text-center">1</h3>
+                <h3 class="text-center"><%= question.answers.count %></h3>
                 <p class="text-center">Respuestas</p>
             </div>
             <div class="col-xs-1">
-                <h3 class="text-center">1</h3>
+                <h3 class="text-center"> <%= question.views %> </h3>
                 <p class="text-center">Vistas</p>
             </div>
             <div class="col-xs-9">
                 <h4><%= link_to question.title, question, class:"title" %></h4>
+                <p><%= link_to (fa_icon "trash-o"), question, :method => :delete, class:"delete" %></p>
             </div>
         </div>     
     <% end %>
