@@ -49,11 +49,15 @@ p{
 			margin-top: 10px;
 			border-bottom: 1px solid #C3C1BF;
 			padding: 5px 0;}
-		.title{
-			text-decoration: none;
-			color: black;
-			&:hover{
-				color:black;}}
+		#principal{
+			.title{
+				text-decoration: none;
+				color: black;
+				&:hover{
+					color:black;}}
+			> p {
+				margin-bottom: 0px;}}
+
 		h3, h4{
 			margin-top:0;}}
 	#formulario{

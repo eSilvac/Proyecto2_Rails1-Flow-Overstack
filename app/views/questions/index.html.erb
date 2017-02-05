@@ -13,9 +13,9 @@
                 <h3 class="text-center"> <%= question.views %> </h3>
                 <p class="text-center">Vistas</p>
             </div>
-            <div class="col-xs-9">
+            <div class="col-xs-9" id="principal">
                 <h4><%= link_to question.title, question, class:"title" %></h4>
-                <p><%= link_to (fa_icon "trash-o"), question, :method => :delete, class:"delete" %></p>
+                <p class="text-right">Hace <%= time_ago_in_words(question.created_at) %></p>
             </div>
         </div>     
     <% end %>

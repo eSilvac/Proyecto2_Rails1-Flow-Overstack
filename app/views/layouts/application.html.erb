@@ -18,7 +18,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
       	<% if user_signed_in? %>
-      		<li><p class="navbar-text"><%= current_user.username %></p></li>
+            <li>  <%= link_to (image_tag (Gravatar.new("#{current_user.email}").image_url), height:"31x31"), questions_path, class:"user-nav" %></li>
       		<li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
       	<% else %>
       		<li><%= link_to "Login", new_user_session_path %></li>
