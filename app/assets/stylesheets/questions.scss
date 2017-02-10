@@ -45,6 +45,25 @@ p{
     				-moz-transition: all .5s;
     				transition: all .5s;}}}}	
     #questions{
+    	.right-to-left { float: right; }
+		
+		.nav{
+			.active {
+				
+				background-color:#F6A03A;}
+			> li {
+				> a {
+					border-radius: 0;
+					border-top: 0;
+					border-left: 1 solid black;
+					margin: 3px 0 0;
+					padding:5 10px;
+					color: black;
+					&:hover{
+						webkit-transition: all 1s;
+	    				-moz-transition: all 1s;
+	    				transition: all 1s;}}}}
+
 		#question-body{
 			margin-top: 10px;
 			border-bottom: 1px solid #C3C1BF;

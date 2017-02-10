@@ -2,7 +2,14 @@ class QuestionsController < ApplicationController
  	before_action :authenticate_user!, except: [:index, :show]
  	
  	def index
-  		@questions = Question.all
+  		@questions = Question.order('created_at DESC')
+
+      if params[:tab] == "vote"
+        @questions = @questions.sort_by {|hsh| hsh.votes.count - hsh.unvotes.count }.reverse
+      end
+      if params[:tab] == "actives"
+        @questions = @questions.sort_by {|hsh| hsh.answers.count }.reverse
+      end
   	end
 
   	def new

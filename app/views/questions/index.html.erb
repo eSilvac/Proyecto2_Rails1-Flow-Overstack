@@ -1,22 +1,36 @@
 <div class="row" id="questions">
-    <% @questions.each do |question| %>
-        <div class="col-xs-12" id="question-body">
-            <div class="col-xs-1">
-                <h3 class="text-center"><%= question.votes.count - question.unvotes.count %></h3>
-                <p class="text-center">Votos</p>
-            </div>
-            <div class="col-xs-1">
-                <h3 class="text-center"><%= question.answers.count %></h3>
-                <p class="text-center">Respuestas</p>
-            </div>
-            <div class="col-xs-1">
-                <h3 class="text-center"> <%= question.views %> </h3>
-                <p class="text-center">Vistas</p>
-            </div>
-            <div class="col-xs-9" id="principal">
-                <h4><%= link_to question.title, question, class:"title" %></h4>
-                <p class="text-right">Hace <%= time_ago_in_words(question.created_at) %></p>
-            </div>
-        </div>     
-    <% end %>
+    <ul class="nav nav-tabs ">
+        <li><h3>Questions</h3></li>
+
+        <li class="<%= params[:tab].present? ? params[:tab] == "new" ? "active right-to-left" : "right-to-left" : "active right-to-left" %>"><%= link_to "Mas nuevo", questions_path(tab:"new") %></li>
+        <li class="<%=  params[:tab] == "vote" ? "active right-to-left" : "right-to-left" %>"><%= link_to "Mas Votado", questions_path(tab:"vote") %></li>
+        <li class="<%=  params[:tab] == "actives" ? "active right-to-left" : "right-to-left" %>"><%= link_to "Mas Activo", questions_path(tab:"actives") %></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <% @questions.each do |question| %>
+                <div class="col-xs-12" id="question-body">
+                    <div class="col-xs-1">
+                        <h3 class="text-center"><%= question.votes.count - question.unvotes.count %></h3>
+                        <p class="text-center">Votos</p>
+                    </div>
+                    <div class="col-xs-1">
+                        <h3 class="text-center"><%= question.answers.count %></h3>
+                        <p class="text-center">Respuestas</p>
+                    </div>
+                    <div class="col-xs-1">
+                        <h3 class="text-center"> <%= question.views %> </h3>
+                        <p class="text-center">Vistas</p>
+                    </div>
+                    <div class="col-xs-9" id="principal">
+                        <h4><%= link_to question.title, question, class:"title" %></h4>
+                        <p class="text-right">Hace <%= time_ago_in_words(question.created_at) %></p>
+                    </div>
+                </div>     
+            <% end %>
+        </div>
+        
+    </div>
+    
 </div>
