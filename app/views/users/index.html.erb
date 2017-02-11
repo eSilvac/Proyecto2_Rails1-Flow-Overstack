@@ -1,0 +1,25 @@
+
+<div class="row" id="usuarios">
+    <ul class="nav nav-tabs ">
+        <li><h3>Usuarios</h3></li>
+        <li class="<%= params[:tab].present? ? params[:tab] == "active" ? "active right-to-left" : "right-to-left" : "active right-to-left" %>"><%= link_to "Mas Activos", users_path(tab:"active") %></li>
+        <li class="<%=  params[:tab] == "new" ? "active right-to-left" : "right-to-left" %>"><%= link_to "Mas Nuevos", users_path(tab:"new") %></li>
+    </ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+        	<% @users.each do |usuario| %>
+        		<div class="col-xs-3" id="usr">
+        			<div class="col-xs-4">
+        				<%= image_tag (Gravatar.new("#{usuario.email}").image_url), height:"70x70" %>
+        			</div>
+        			<div class="col-xs-8" id="usr-info">
+        				<h4><%= link_to usuario.username, user_path(usuario) %></h4>
+        				
+        				<p><%= usuario.email %></p>
+        				<p><strong><%= usuario.questions.count + usuario.answers.count + usuario.votes.count + usuario.unvotes.count %></strong></p>
+        			</div>
+        		</div>
+        	<% end %>
+        </div>
+    </div>
+</div>
