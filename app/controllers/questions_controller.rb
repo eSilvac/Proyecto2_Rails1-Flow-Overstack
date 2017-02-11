@@ -10,6 +10,9 @@ class QuestionsController < ApplicationController
       if params[:tab] == "actives"
         @questions = @questions.sort_by {|hsh| hsh.answers.count }.reverse
       end
+      if params[:search].present? 
+        @questions = @questions.where("title LIKE ?", "%#{params[:search]}%")
+      end
   	end
 
   	def new
