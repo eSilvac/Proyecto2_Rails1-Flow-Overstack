@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get 'questions/index'
 
 	root 'questions#index'
-	resources :users, only: [:index,:show]
+	resources :users, only: [:index,:show], param: :username
 	resources :questions do
 		resources :answers, only: [:create,:destroy,:update] do
 			resources :votes, only: [:create,:destroy]

@@ -26,6 +26,7 @@
                     <div class="col-xs-9" id="principal">
                         <h4><%= link_to question.title, question, class:"title" %></h4>
                         <p class="text-right">Hace <%= time_ago_in_words(question.created_at) %></p>
+                        <p class="text-right"> Por <%= question.user.username %></p>
                     </div>
                 </div>     
             <% end %>

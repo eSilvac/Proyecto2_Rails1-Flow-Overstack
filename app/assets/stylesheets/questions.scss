@@ -9,6 +9,7 @@ p{
 	word-wrap: break-word;}
 .container{
 	h3, h4{
+		margin-bottom: 3px;
 		margin-top:0;}
 	#adv{
 		border-radius: 6px;
@@ -172,7 +173,7 @@ p{
 			.active {
 				
 				background-color:#F6A03A;}
-				
+
 			> li {
 				> a {
 					border-radius: 0;
@@ -192,9 +193,7 @@ p{
 			margin-top: 5px;
 			text-decoration: none;
 			#usr-info{
-				padding: 0;}
-			h4 {
-				margin-bottom: 3px;}
+				padding: 0;}		
 			p {
 				margin:0;}
 			img {
@@ -207,8 +206,34 @@ p{
 				background-color: lightgrey;
 				webkit-transition: all 1s;
 	    		-moz-transition: all 1s;
-	    		transition: all 1s;}
+	    		transition: all 1s;}}}
+	#usuario-info{
+		#image-rep{
+			background-color: #E8E6E6;
+			border: 2px solid lightgrey;
+			border-radius: 2px;
+			margin-top: 50px;
+			padding: 30px 15px;
+			> img {
+				margin-bottom: 15px;}}
+		#info-pri{
+			margin-top: 55px;
+			padding-left: 25px;
 		}
-
+		#info-seg{
+			padding: 10px 0;
+			background-color: #E8E6E6;
+			border: 2px solid lightgrey;
+			border-radius: 2px;
+			font-size: 15px;
+			margin-top: 60px;
+			p {
+				margin-bottom: 0px;
+			}
+			.co{
+				> p {
+				margin-top: 15px;}}
+			
+		}
 	}
 }
