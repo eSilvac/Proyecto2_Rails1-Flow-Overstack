@@ -30,6 +30,8 @@ class User < ApplicationRecord
 	has_many :favorites
 	has_many :answers
 
+	validates :info, presence: true
+
 	validates :username,
 	:presence => true,
 	:uniqueness => {

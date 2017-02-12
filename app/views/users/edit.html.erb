@@ -1,0 +1,76 @@
+<div class="container">
+    <%= form_for @user_edit do |f| %>
+        <div class="row">    
+            <h1 class="text-center">Editar Cuenta</h1>
+            <br>
+            <% if @user_edit.errors.any? %>
+              <div class="alert alert-danger">
+                <ul>
+                <% @user_edit.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <%= f.label "Imagen de perfil" %><br />
+                    <%= image_tag (Gravatar.new("#{@user_edit.email}").image_url), width:"100%", :style => "border-radius:5px;" %>
+                </div>
+                <div class="form-group">
+                    <%= f.file_field :image, value: "Choose a file" %>
+                </div>
+            </div>
+
+            <div class="col-xs-4">
+                <div class="form-group">
+                   <%= f.label "Nombre" %><br />
+                   <%= f.text_field :username, autofocus: true, class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.label :email %><br />
+                    <%= f.email_field :email, autofocus: true, class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= fa_icon "github" %>
+                    <%= f.label "Github" %><br />
+                    <%= f.text_field :github, autofocus: true, class:"form-control" %>
+                </div>
+
+                <div class="form-group">
+                    <%= fa_icon "twitter" %>
+                    <%= f.label "Twitter" %><br />
+                    <%= f.text_field :twitter, autofocus: true, class:"form-control" %>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <%= f.label "Trabajo/Rol que desempeñas" %><br />
+                    <%= f.text_field :info, class:"form-control" %>
+                </div>
+
+                <div class="form-group" id="form-user">
+                    <%= f.label "Hacerca de mi" %><br />
+                    <div class="sugerencia">
+                        <p>Recuerda que puedes usar Markdown en tus respuestas, si quieres mas info de markdown, <%= link_to "entra aquí.", "https://learn.getgrav.org/content/markdown", :target => "_blank"%></p>
+                    </div>
+                    <%= f.text_area :about, rows:"10", class:"form-control" %>
+                </div>
+            </div>
+        </div>
+        <hr class="style2">
+        <div class="row">
+            <div class="text-right">
+                <div class="form-group">
+                    <%= f.submit "Guardar Perfil", class: "btn btn-info " %>
+                    <%= link_to "Volver", :back, class: "btn btn-warning" %>
+                </div>
+
+            </div>
+        </div>
+    <% end %> 
+</div>

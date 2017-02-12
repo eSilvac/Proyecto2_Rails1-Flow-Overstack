@@ -7,6 +7,7 @@ hr.style2{
   		width: 100%;}
 p{
 	word-wrap: break-word;}
+
 .container{
 	h3, h4{
 		margin-bottom: 3px;
@@ -18,6 +19,20 @@ p{
 		background-color: #ABA9A6;
 		p{
 			margin-bottom: 0;}}
+	#form-user{
+		.sugerencia{
+			background-color:#FAEFBB;
+			width: 100%;
+			text-align: center;
+			padding: 10px 0;
+			margin-top: 10px;
+			border-radius: 5px 5px 0 0;
+			p{
+				margin-bottom: 0;}}
+		textarea{
+			resize: none;
+			border-radius: 0 0 5px 5px;}
+	}
 	
 	#first-part{
 		margin-bottom: 25px;
@@ -128,7 +143,7 @@ p{
 					margin-bottom: 5px;}}}
 		
 		#answer{
-			#form-answer{
+			#form-answer,{
 				margin-bottom: 50px;
 				.sugerencia{
 					background-color:#FAEFBB;
@@ -232,8 +247,5 @@ p{
 			}
 			.co{
 				> p {
-				margin-top: 15px;}}
-			
-		}
-	}
+				margin-top: 15px;}}}}
 }
