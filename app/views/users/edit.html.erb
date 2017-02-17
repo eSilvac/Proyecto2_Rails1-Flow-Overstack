@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="form-user">
     <%= form_for @user_edit do |f| %>
         <div class="row">    
             <h1 class="text-center">Editar Cuenta</h1>
@@ -19,7 +19,13 @@
                     <%= image_tag (Gravatar.new("#{@user_edit.email}").image_url), width:"100%", :style => "border-radius:5px;" %>
                 </div>
                 <div class="form-group">
-                    <%= f.file_field :image, value: "Choose a file" %>
+                   <div class="image-upload text-center">
+                        <label for="file-input">
+                            <span class="btn btn-success btn-sm btn-block ">Subir Imagen</span>
+                        </label>
+
+                        <%= f.file_field :image_url, id:"file-input", display:"none"; %>
+                   </div>
                 </div>
             </div>
 
@@ -53,7 +59,7 @@
                     <%= f.text_field :info, class:"form-control" %>
                 </div>
 
-                <div class="form-group" id="form-user">
+                <div class="form-group">
                     <%= f.label "Hacerca de mi" %><br />
                     <div class="sugerencia">
                         <p>Recuerda que puedes usar Markdown en tus respuestas, si quieres mas info de markdown, <%= link_to "entra aquí.", "https://learn.getgrav.org/content/markdown", :target => "_blank"%></p>
@@ -74,3 +80,7 @@
         </div>
     <% end %> 
 </div>
+
+<script>
+    $(":file").filestyle();
+</script>

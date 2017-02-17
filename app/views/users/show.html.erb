@@ -1,37 +1,71 @@
 <div class="row" id="usuario-info">
     <ul class="nav nav-tabs ">
-        <li class="<%= params[:tab].present? ? params[:tab] == "active" ? "active" : "" : "active" %>"><%= link_to "Perfil", users_path(tab:"profile") %></li>
-        <li class="<%=  params[:tab] == "activity" ? "active" : "" %>"><%= link_to "Actividad", users_path(tab:"activity") %></li>
+        <li class="<%= params[:tab].present? ? params[:tab] == "profile" ? "active" : "" : "active" %>"><%= link_to "Perfil", user_path(@user_show.username, tab:"profile") %></li>
+        <li class="<%=  params[:tab] == "activity" ? "active" : "" %>"><%= link_to "Actividad", user_path(@user_show.username, tab:"activity") %></li>
         <% if current_user == @user_show %>
         	<li class="<%=  params[:tab] == "edit" ? "active" : "" %>"><%= link_to "Editar",  edit_user_path(@user_show.username,tab:"edit") %></li>
         <% end %>
     </ul>
     <div class="tab-content">
-        <div id="home" class="tab-pane fade in active">
-        	<div class="col-xs-3 text-center" id="image-rep">
-        		<%= image_tag (Gravatar.new("#{@user_show.email}").image_url), height:"180x180" %>
-        		<h4>Reputacion: <%= @user_show.questions.count + @user_show.answers.count + @user_show.votes.count + @user_show.unvotes.count %></h4>
-        	</div>
-        	<div class="col-xs-6" id="info-pri">
-        		<h2><strong><%= @user_show.username %></strong></h2>
-        		<h3><%= @user_show.info %></h3>
-        		<p>otra cosa que voy a pensar</p>
-        	</div>
-        	<div class="col-xs-3" id="info-seg">
-        		<div class="col-xs-6 text-center" >
-        			<p><strong><%= @user_show.questions.count %></strong></p>
-        			<p>Preguntas</p>
-        		</div>
-        		<div class="col-xs-6 text-center">
-        			<p><strong><%= @user_show.answers.count %></strong></p>
-        			<p>Respuestas</p>
-        		</div>
-        		
-				<div class="col-xs-12 co">
-					<p><%= fa_icon "envelope-o" %> Email: <%= @user_show.email %></p>
-        			<p><%= fa_icon "undo" %> Miembro desde hace <%= time_ago_in_words(@user_show.created_at) %></p> 
-				</div>        		     			        		
-        	</div>
-        </div>
+    	<% if params[:tab] == "profile" || params[:tab] == nil  %>
+	    	<div id="first" class="tab-pane fade in active">
+	        	<div class="col-xs-3 text-center" id="image-rep">
+	        		<%= image_tag (Gravatar.new("#{@user_show.email}").image_url), height:"180x180" %>
+	        		<h4>Reputacion: <%= @user_show.questions.count + @user_show.answers.count + @user_show.votes.count + @user_show.unvotes.count %></h4>
+	        	</div>
+	        	<div class="col-xs-6" id="info-pri">
+	        		<h2><strong><%= @user_show.username %></strong></h2>
+	        		<h3><%= @user_show.info %></h3>
+	        		<p><%= @user_show.about %></p>
+	        	</div>
+	        	<div class="col-xs-3" id="info-seg">
+	        		<div class="col-xs-6 text-center" >
+	        			<p><strong><%= @user_show.questions.count %></strong></p>
+	        			<p>Preguntas</p>
+	        		</div>
+	        		<div class="col-xs-6 text-center">
+	        			<p><strong><%= @user_show.answers.count %></strong></p>
+	        			<p>Respuestas</p>
+	        		</div>
+	        		
+					<div class="col-xs-12 co">
+						<p><%= fa_icon "envelope-o" %> Email: <%= @user_show.email %></p>
+	        			<p><%= fa_icon "undo" %> Miembro desde hace <%= time_ago_in_words(@user_show.created_at) %></p> 
+	        			<% if @user_show.github.present? %>
+	        				<p><%= fa_icon "github" %> <%= @user_show.github %></p>
+	        			<% end %>
+	        			<% if @user_show.twitter.present? %>
+	        				<p><%= fa_icon "twitter" %> <%= @user_show.twitter %></p>
+	        			<% end %>
+					</div>        		     			        		
+	        	</div>
+	        </div>
+	    <% else %>
+	    	<div id="activity" class="tab-pane fade in active">
+	    	<br>
+	    	<br>
+	    		<div class="col-xs-6" >
+	    			<h4>Preguntas</h4>
+	    			<hr class="style2">
+					<% @user_show.questions.each do |question| %>
+						<div class="row" id="preg">
+							<div class="col-xs-2" id="views"><h4><%= question.views %></h4></div>
+							<div class="col-xs-10" id="title"><h4><%= question.title %></h4></div>
+						</div>	
+					<% end %>
+	    		</div>
+	    		<div class="col-xs-6" id="answ">
+	    			<h4>Respuestas</h4>
+	    			<hr class="style2">
+	    			<% @user_show.answers.each do |answer| %>
+	    				<div class="row" id="preg">
+	    					<div class="col-xs-2" id="views"><h4><%= answer.votes.count %></h4></div>
+	    					<div class="col-xs-10" id="title"><h4><%= answer.question.title %></h4></div>
+	    				</div>	
+	    			<% end %>
+	    		</div>
+			</div>
+    	<% end %>
+        
     </div>
 <div>

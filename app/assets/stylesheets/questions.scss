@@ -20,6 +20,13 @@ p{
 		p{
 			margin-bottom: 0;}}
 	#form-user{
+		.image-upload > input
+		{
+		    display: none;
+		}
+		.image-upload > label{
+		  cursor:pointer;
+		}
 		.sugerencia{
 			background-color:#FAEFBB;
 			width: 100%;
@@ -247,5 +254,24 @@ p{
 			}
 			.co{
 				> p {
-				margin-top: 15px;}}}}
+				margin-top: 15px;}}}
+		#activity{
+			#preg{
+				margin-bottom: 10px;
+				#views{
+					margin-bottom: 10px;
+					> h4 {
+						border:0.5px solid lightgrey;
+						text-align: center;
+						padding: 6px 0;}}
+				#title{
+					margin-bottom: 10px;
+					> h4 {
+						margin-top: 5px;}}
+			}
+			#answ{
+
+			}
+		}
+	}
 }

@@ -10,11 +10,11 @@
 #
 
 class Question < ApplicationRecord
-	has_many :votes
-	has_many :unvotes
-	has_many :comments
-	has_many :favorites
-	has_many :answers
+	has_many :votes, dependent: :destroy
+	has_many :unvotes, dependent: :destroy
+	has_many :comments, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :answers,dependent: :destroy
 
 	belongs_to :user
 

@@ -23,12 +23,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
 	attr_accessor :login
 
-	has_many :questions
-	has_many :votes
-	has_many :unvotes
-	has_many :comments
-	has_many :favorites
-	has_many :answers
+	has_many :questions, dependent: :destroy
+	has_many :votes, dependent: :destroy
+	has_many :unvotes, dependent: :destroy
+	has_many :comments, dependent: :destroy
+	has_many :favorites, dependent: :destroy
+	has_many :answers, dependent: :destroy
 
 	validates :info, presence: true
 
