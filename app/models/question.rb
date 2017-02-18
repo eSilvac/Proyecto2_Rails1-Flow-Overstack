@@ -18,7 +18,7 @@ class Question < ApplicationRecord
 
 	belongs_to :user
 
-  validates :title, presence: true, length: { minimum: 20, maximum: 50 }
+  validates :title, presence: true, length: { minimum: 20, maximum: 100 }
   validates :body, presence: true,length: { minimum: 50 }
 
   
