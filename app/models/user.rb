@@ -33,19 +33,8 @@ class User < ApplicationRecord
 	validates :info, presence: true
 
 	validates :username,
-	:presence => true,
-	:uniqueness => {
-	:case_sensitive => false
-	}
-
-	validate :validate_username
-
-	def validate_username
-		if User.where(email: username).exists?
-		  errors.add(:username, :invalid)
-		end
-	end
-
+	:presence => true
+	
   	def self.find_for_database_authentication(warden_conditions)
         conditions = warden_conditions.dup
         if login = conditions.delete(:login)
@@ -55,6 +44,6 @@ class User < ApplicationRecord
         end
     end
 
-  devise :database_authenticatable, :registerable,
+    devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 end

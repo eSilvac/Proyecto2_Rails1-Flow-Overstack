@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+	before_action :authenticate_user!, only: [:edit,:update]
 	def index
 		@users = User.all.sort_by {|hsh| hsh.questions.count + hsh.answers.count + hsh.votes.count + hsh.unvotes.count }.reverse
 		if params[:tab] == "new"
@@ -15,7 +17,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user_edit = User.find_by(params[:username])
+		@user_edit = current_user
 		if @user_edit.update(user_params)
 			flash[:alert] = "Usuario Modificado Correctamente"
 			redirect_to user_path(@user_edit.username)
@@ -26,6 +28,6 @@ class UsersController < ApplicationController
 
 	private
 	  	def user_params
-	  		params.require(:user).permit(:username, :email, :info, :twitterurl, :github, :about)
+	  		params.require(:user).permit(:username, :info, :twitterurl, :github, :about)
 	  	end
 end
