@@ -14,7 +14,7 @@
 	        		<h4>Reputacion: <%= @user_show.questions.count + @user_show.answers.count + @user_show.votes.count + @user_show.unvotes.count %></h4>
 	        	</div>
 	        	<div class="col-xs-6" id="info-pri">
-	        		<h2><strong><%= @user_show.username %></strong></h2>
+	        		<h2><strong><%= @user_show.name %></strong></h2>
 	        		<h3><%= @user_show.info %></h3>
 	        		<% if @user_show.about.present? %>
 	        			<p><%= markdown(@user_show.about)%></p>
