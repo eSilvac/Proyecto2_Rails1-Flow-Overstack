@@ -162,9 +162,21 @@
 
 
 					<div class="col-xs-12" id="form-comment">	
+						
+
 
 
 						<%= form_for [@question, answer, answer.comments.new] do |com| %>
+							<% if @answe_newr && @answer.errors.any? %>
+							  <div class="alert alert-danger">
+							    <ul>
+							    <% @answer_new.errors.full_messages.each do |msg| %>
+							      <li><%= msg %></li>
+							    <% end %>
+							    </ul>
+							  </div>
+							<% end %>
+
 							<div class="form-group">
 								<%= com.text_area :body, rows:"1", class: "form-control", id:"text", placeholder: "Agrega tu Comentario" %>
 							</div>
@@ -214,9 +226,6 @@
 		   $('textarea[id="text"]').show();
 	    return false;
 	});
-
-
-
 	$('textarea[id="text"]').keyup(function (e) {
 	    var rows = $(this).val().split("\n");
 	    $(this).prop('rows', rows.length);

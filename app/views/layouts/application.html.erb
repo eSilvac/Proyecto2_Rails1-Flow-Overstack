@@ -43,6 +43,17 @@
   <br>
   <body>
   	<div class="container">
+
+      <% unless flash.blank? %>
+        <div class="row">
+          <div class="col-xs-4 col-xs-offset-4">
+            <div class="mensajes">
+              <%= render partial: 'layouts/messages', flash: flash %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
   		<%= yield %>
     </div>
   </body>

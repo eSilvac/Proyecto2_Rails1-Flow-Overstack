@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
         	question.comments.create(comment_params)
         end
         question.update(views:question.views -= 1)
+        flash[:success] = "Publicada Correctamente"
     	redirect_to Question.find(params[:question_id])
     end
 

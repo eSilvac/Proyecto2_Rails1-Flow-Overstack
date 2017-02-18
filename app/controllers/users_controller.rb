@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 	def update
 		@user_edit = User.find_by(params[:username])
 		if @user_edit.update(user_params)
+			flash[:alert] = "Usuario Modificado Correctamente"
 			redirect_to user_path(@user_edit.username)
 		else
 			render :edit			

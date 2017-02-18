@@ -6,6 +6,8 @@ class Answer < ApplicationRecord
   has_many :unvotes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  validates :body, presence: true, length: { minimum: 50 }
+
   	def voted_by?(user)
   		votes.exists?(user: user)
   	end

@@ -1,5 +1,9 @@
 es:
-  activerecord:
+  activerecord: 
+    attributes:
+      question:
+        title: "El titulo "
+        body: "La pregunta"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

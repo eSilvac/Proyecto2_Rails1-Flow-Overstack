@@ -24,6 +24,7 @@ class QuestionsController < ApplicationController
   		@question.user = current_user
       @question.views = 0
   		if @question.save
+        flash[:success] = "Pregunta Publicada Correctamente"
   			redirect_to questions_path
   		else
   			render :new
@@ -43,6 +44,7 @@ class QuestionsController < ApplicationController
   	def update
   		@question = Question.find(params[:id])
   		if @question.update(question_params)
+        flash[:alert] = "Pregunta Modificada Correctamente"
   			redirect_to @question
   		else
   			render :edit
@@ -52,6 +54,7 @@ class QuestionsController < ApplicationController
     def destroy
       @question = Question.find(params[:id])
       @question.destroy
+      flash[:error] = "Pregunta Eliminada Correctamente"
       redirect_to questions_path
     end
 
