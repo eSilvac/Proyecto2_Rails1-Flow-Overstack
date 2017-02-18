@@ -4,31 +4,49 @@
 @import "questions.scss";
 
 
-$bgDefault      : #232425;
-$bgHighlight    : #373738;
-$colDefault     : #ffffff;
-$colHighlight   : #fdfdfd;
-$dropDown       : false;
+$bgDefault      : #fafafb;
+$bgHighlight    : #c0392b;
+$colDefault     : #7c7d7e;
+$colHighlight   : #020000;
+$dropDown       : true;
 .inbox{
 	font-size: 16px;}
 .navbar-default {
-  height: 40px;
+  padding: 3px;
   background-color: $bgDefault;
-  border-color: $bgHighlight;
+  border-top: 3px solid #F6A03A;
+  border-bottom: 1px solid lightgrey;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  .link-to{
+    .image{
+      margin-top: 8px;}}
   .user-nav{
-    padding:8px 0;}
+    padding: 8px 18px;}
   .navbar-brand {
     color: $colDefault;
     &:hover, &:focus {
       color: $colHighlight; }}
   .navbar-text {
     color: $colDefault; }
+  .navbar-header {
+    margin-right: 15px;}
   .navbar-nav {
+    .hacerpregunta{
+      > a {
+        border-radius: 3px;
+        margin: 7px;
+        padding: 8px;
+        border: 0.5px solid #07c;
+        background-color: #0095ff;
+        color: white;}}
     > li {
       > a {
         color: $colDefault;
         &:hover,  &:focus {
-          color: $colHighlight; }
+          background-color:lightgrey;
+          color: black; }
       	}
       @if $dropDown {
         > .dropdown-menu {
@@ -62,7 +80,11 @@ $dropDown       : false;
       background-color: $colDefault; }}
   .navbar-collapse,
   .navbar-form {
-    border-color: $colDefault; }
+    margin-top: 10px;
+    border-color: $colDefault; 
+    width: 50px;
+    
+  }
   .navbar-link {
     color: $colDefault;
     &:hover {

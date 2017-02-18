@@ -40,35 +40,7 @@ p{
 			resize: none;
 			border-radius: 0 0 5px 5px;}
 	}
-	
-	#first-part{
-		margin-bottom: 25px;
-		#title-line{
-			font-size: 33px;
-			height: 40px;
-			.link-to{
-				text-decoration: none;
-				color: black;		
-				&:hover{
-					color:black;}
-
-				.image{
-					margin-bottom: 20px;}}}
-		#title-buttons{
-			height: 40px;
-			padding-right: 0;
-			.btn{
-				border:0;
-				border-radius: 2px;
-				font-size: 15px;
-				background-color: #9E9C9B;
-				margin-top: 5px;
-				margin-left: 3px;
-				&:hover{
-					background-color:#F6A03A ;
-					webkit-transition: all .5s;
-    				-moz-transition: all .5s;
-    				transition: all .5s;}}}}	
+		
     #questions{
 		#question-body{
 			margin-top: 10px;

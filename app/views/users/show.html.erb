@@ -16,7 +16,7 @@
 	        	<div class="col-xs-6" id="info-pri">
 	        		<h2><strong><%= @user_show.username %></strong></h2>
 	        		<h3><%= @user_show.info %></h3>
-	        		<p><%= @user_show.about %></p>
+	        		<p><%= markdown(@user_show.about)%></p>
 	        	</div>
 	        	<div class="col-xs-3" id="info-seg">
 	        		<div class="col-xs-6 text-center" >
