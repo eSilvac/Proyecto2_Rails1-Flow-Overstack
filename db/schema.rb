@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212072735) do
+ActiveRecord::Schema.define(version: 20170218181947) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "body"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170212072735) do
     t.datetime "updated_at",                          null: false
     t.string   "username"
     t.string   "info"
-    t.string   "twitter"
+    t.string   "twitterurl"
     t.string   "github"
     t.text     "about"
     t.index ["email"], name: "index_users_on_email", unique: true
