@@ -73,7 +73,7 @@
 						<p><%= coment.body %> -- <%= coment.user.name %> |
 							<strong><%= time_ago_in_words(coment.created_at) %></strong>
 							<% if current_user == coment.user %>
-							    <%= link_to (fa_icon "trash-o"), question_comment_path(coment.question, coment), :method => :delete, class:"delete" %>
+							    <%= link_to (fa_icon "trash-o"), question_comment_path(coment.question), :method => :delete, class:"delete" %>
 							<% end %>
 						</p>
 					</div>
@@ -154,7 +154,7 @@
 							<p><%= coment.body %> -- <%= coment.user.name %> |
 							<strong><%= time_ago_in_words(coment.created_at) %></strong>
 								<% if current_user == coment.user %>
-								    <%= link_to (fa_icon "trash-o"), question_answer_comment_path(@question, coment.answer, coment), :method => :delete, class:"delete" %>
+								    <%= link_to (fa_icon "trash-o"), question_answer_comment_path(@question, coment.answer), :method => :delete, class:"delete" %>
 								<% end %>
 							</p>
 						</div>
