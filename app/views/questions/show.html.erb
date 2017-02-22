@@ -73,7 +73,7 @@
 						<p><%= coment.body %> -- <%= coment.user.name %> |
 							<strong><%= time_ago_in_words(coment.created_at) %></strong>
 							<% if current_user == coment.user %>
-							    <%= link_to (fa_icon "trash-o"), question_comment_path(coment.question), :method => :delete, class:"delete" %>
+							    <%= link_to (fa_icon "trash-o"), question_comment_path(coment.question, coment), :method => :delete, class:"delete" %>
 							<% end %>
 						</p>
 					</div>
@@ -136,7 +136,7 @@
 					
 					<div class="col-xs-9" id="post-edit">
 						<% if current_user == answer.user %>
-							<%= link_to "<strong>Eliminar</strong".html_safe, question_answer_path(@question, answer), :method => :delete, class:"delete" %>
+							<%= link_to "<strong>Eliminar</strong>".html_safe, question_answer_path(@question, answer), :method => :delete, class:"delete" %>
 						<% else %>
 							<p>Eliminar</p>
 						<% end %>
@@ -154,7 +154,7 @@
 							<p><%= coment.body %> -- <%= coment.user.name %> |
 							<strong><%= time_ago_in_words(coment.created_at) %></strong>
 								<% if current_user == coment.user %>
-								    <%= link_to (fa_icon "trash-o"), question_answer_comment_path(@question, coment.answer), :method => :delete, class:"delete" %>
+								    <%= link_to (fa_icon "trash-o"), question_answer_comment_path(@question,answer,coment), :method => :delete, class:"delete" %>
 								<% end %>
 							</p>
 						</div>
@@ -162,10 +162,6 @@
 
 
 					<div class="col-xs-12" id="form-comment">	
-						
-
-
-
 						<%= form_for [@question, answer, answer.comments.new] do |com| %>
 							<% if @answe_newr && @answer.errors.any? %>
 							  <div class="alert alert-danger">

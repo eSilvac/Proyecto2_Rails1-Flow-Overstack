@@ -10,19 +10,16 @@ class CommentsController < ApplicationController
         end
         question.update(views:question.views -= 1)
         flash[:success] = "Publicada Correctamente"
-    	redirect_to Question.find(params[:question_id])
+    	redirect_to question
     end
 
     def destroy
         question = Question.find(params[:question_id])
-        if params[:answer_id].present?
-            answer = Answer.find(params[:answer_id])
-            answer.comments.where(params[:id]).take.try(:destroy)
-        else
-    	   question.comments.where(params[:id]).take.try(:destroy)
-        end
+        comment = Comment.find(params[:id])
+        comment.destroy
+       
         question.update(views:question.views -= 1)
-    	redirect_to Question.find(params[:question_id])
+    	redirect_to question
     end
 
     private
