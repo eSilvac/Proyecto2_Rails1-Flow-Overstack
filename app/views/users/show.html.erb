@@ -53,24 +53,72 @@
 	    	<br>
 	    	<br>
 	    		<div class="col-xs-6" >
-	    			<h4>Preguntas</h4>
+	    			<h4><%= fa_icon "question-circle-o -fa-lg" %> Preguntas</h4>
 	    			<hr class="style2">
-					<% @user_show.questions.each do |question| %>
-						<div class="row" id="preg">
-							<div class="col-xs-2" id="views"><h4><%= question.views %></h4></div>
-							<div class="col-xs-10" id="title"><h4><%= question.title %></h4></div>
-						</div>	
-					<% end %>
-	    		</div>
-	    		<div class="col-xs-6" id="answ">
-	    			<h4>Respuestas</h4>
-	    			<hr class="style2">
-	    			<% @user_show.answers.each do |answer| %>
-	    				<div class="row" id="preg">
-	    					<div class="col-xs-2" id="views"><h4><%= answer.votes.count %></h4></div>
-	    					<div class="col-xs-10" id="title"><h4><%= answer.question.title %></h4></div>
-	    				</div>	
+	    			<% if @user_show.questions.empty? %>
+	    				<% if @user_show == current_user %>
+	    					<h4 class="text-center">Aun no tienes preguntas, <strong><%= link_to "haz una aquí.", new_question_path %></strong></h4>
+						<% else %>
+							<h4 class="text-center"><strong>El usuario aun no tiene preguntas publicadas.</strong> </h4>
+	    				<% end %>
+	    			<% else %>
+						<% @user_show.questions.each do |question| %>
+							<%= link_to question do %>
+								<div class="row" id="preg">
+									<div class="col-xs-2" id="views"><h4><%= question.views %></h4></div>
+									<div class="col-xs-10" id="title"><h4><%= question.title %></h4></div>
+								</div>
+							<% end %>
+						<% end %>
 	    			<% end %>
+					<br>
+
+					<h4><%= fa_icon "check-circle-o fa-lg" %> Respuestas</h4>
+	    			<hr class="style2">
+	    			<% if @user_show.answers.empty? %>
+	    				<% if @user_show == current_user %>
+	    					<h4 class="text-center">Aun no tienes respuestas.</h4>
+						<% else %>
+							<h4 class="text-center"><strong>El usuario aun no ha respondido a ninguna pregunta.</strong> </h4>
+	    				<% end %>
+	    				
+	    			<% else %>
+		    			<% @user_show.answers.each do |answer| %>
+		    				<%= link_to answer.question do %>
+			    				<div class="row" id="preg">
+			    				
+			    					<div class="col-xs-2" id="views"><h4><%= answer.votes.count %></h4></div>
+			    					<div class="col-xs-10" id="title"><h4><%= answer.question.title %></h4></div>
+			    				</div>	
+			    			<% end %>
+		    			<% end %>
+	    			<% end %>
+	    			
+	    		</div>
+	    		<div class="col-xs-6" id="fav">
+	    			<h4><%= fa_icon "star-o fa-lg" %> Favoritos</h4>
+	    			<hr class="style2">
+	    			<% if @user_show.favorites.empty? %>
+	    				<% if @user_show == current_user %>
+	    					<h4 class="text-center">Aun no tienes ninguna pregunta como favortia.</h4>
+						<% else %>
+							<h4 class="text-center"><strong>El usuario aun no ha respondido a ninguna pregunta.</strong> </h4>
+	    				<% end %>
+
+	    			<% else %>
+		    			<% @user_show.favorites.each do |fav| %>
+		    				<%= link_to fav.question do %>
+			    				<div class="row" id="preg">
+			    				
+			    					<div class="col-xs-2" id="views"><h4><%= fav.question.votes.count %></h4></div>
+			    					<div class="col-xs-10" id="title"><h4><%= fav.question.title %></h4></div>
+			    				</div>	
+			    			<% end %>
+		    			<% end %>
+		    		<% end %>
+	    		</div>
+	    		<div class="col-xs-6">
+	    			
 	    		</div>
 			</div>
     	<% end %>

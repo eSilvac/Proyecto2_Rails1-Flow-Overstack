@@ -185,6 +185,7 @@ p{
 	    				transition: all 1s;}}}}
 
 	#usuarios{
+		
 		#usr{
 			padding: 15px 0;
 			margin-top: 5px;
@@ -205,6 +206,10 @@ p{
 	    		-moz-transition: all 1s;
 	    		transition: all 1s;}}}
 	#usuario-info{
+		a{
+			color: black;
+			text-decoration: none;
+		}
 		#image-rep{
 			background-color: #E8E6E6;
 			border: 2px solid lightgrey;
@@ -242,11 +247,11 @@ p{
 				#title{
 					margin-bottom: 10px;
 					> h4 {
-						margin-top: 5px;}}
+						margin-top: 5px;}}}
+			#fav{
+				border-left: 1px solid lightgrey;
 			}
-			#answ{
 
-			}
 		}
 	}
 }
