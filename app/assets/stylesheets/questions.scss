@@ -45,7 +45,9 @@ p{
 		#question-body{
 			margin-top: 10px;
 			border-bottom: 1px solid #C3C1BF;
-			padding: 5px 0;}
+			padding: 5px 0;
+			p {
+				word-wrap: normal;}}
 		#principal{
 			.title{
 				text-decoration: none;
