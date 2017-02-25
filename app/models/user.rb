@@ -32,6 +32,13 @@ class User < ApplicationRecord
 
 	validates :info, presence: true
   validates :name, presence: true
+
+  validates :username,
+  :presence => true,
+  :uniqueness => {
+    :case_sensitive => false
+  }
+  
 	validate :validate_username
 
   def validate_username

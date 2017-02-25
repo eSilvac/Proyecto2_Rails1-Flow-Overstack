@@ -4,6 +4,16 @@ es:
       question:
         title: "El titulo "
         body: "La pregunta"
+      comment:
+        body: "El comentario"
+      answer:
+        body: "La respuesta"
+      user:
+        email: "El correo electrónico"
+        password: "La contraseña"
+        username: "El nombre de usuario"
+        name: "Tu nombre"
+        info: "La informacion"
     errors:
       messages:
         record_invalid: "La validación falló: %{errors}"

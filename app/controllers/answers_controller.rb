@@ -6,7 +6,9 @@ class AnswersController < ApplicationController
     	@answer_new = @question.answers.create(answer_params)
         @question.update(views:@question.views -= 1)
         if @answer_new.errors.any?
-            flash[:error] = "No se publico tu respuesta, esta vacia o muy corta"
+            @answer_new.errors.full_messages.each do |error|
+                flash[:error] = error
+            end
             redirect_to @question
         else
             flash[:success] = "Pregunta Publicada Correctamente"

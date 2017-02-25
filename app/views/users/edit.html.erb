@@ -15,17 +15,7 @@
 
             <div class="col-xs-2">
                 <div class="form-group">
-                    <%= f.label "Imagen de perfil" %><br />
                     <%= image_tag (Gravatar.new("#{@user_edit.email}").image_url), width:"100%", :style => "border-radius:5px;" %>
-                </div>
-                <div class="form-group">
-                   <div class="image-upload text-center">
-                        <label for="file-input">
-                            <span class="btn btn-success btn-sm btn-block ">Subir Imagen</span>
-                        </label>
-
-                        <%= f.file_field :image_url, id:"file-input", display:"none"; %>
-                   </div>
                 </div>
             </div>
 
@@ -57,7 +47,7 @@
                 <div class="form-group">
                     <%= f.label "Hacerca de mi" %><br />
                     <div class="sugerencia">
-                        <p>Recuerda que puedes usar Markdown en tus respuestas, si quieres mas info de markdown, <%= link_to "entra aquí.", "https://learn.getgrav.org/content/markdown", :target => "_blank"%></p>
+                        <p>Recuerda que puedes usar Markdown en tus respuestas, si quieres más info de markdown, <%= link_to "entra aquí.", "https://learn.getgrav.org/content/markdown", :target => "_blank"%></p>
                     </div>
                     <%= f.text_area :about, rows:"10", class:"form-control" %>
                 </div>

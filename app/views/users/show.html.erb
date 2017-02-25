@@ -1,3 +1,13 @@
+<% unless flash.blank? %>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="mensajes">
+        <%= render partial: 'layouts/messages', flash: flash %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="row" id="usuario-info">
     <ul class="nav nav-tabs ">
         <li class="<%= params[:tab].present? ? params[:tab] == "profile" ? "active" : "" : "active" %>"><%= link_to "Perfil", user_path(@user_show.username, tab:"profile") %></li>
@@ -11,7 +21,7 @@
 	    	<div id="first" class="tab-pane fade in active">
 	        	<div class="col-xs-3 text-center" id="image-rep">
 	        		<%= image_tag (Gravatar.new("#{@user_show.email}").image_url), height:"180x180" %>
-	        		<h4>Reputacion: <%= @user_show.questions.count + @user_show.answers.count + @user_show.votes.count + @user_show.unvotes.count %></h4>
+	        		<h4>Reputación: <%= @user_show.questions.count + @user_show.answers.count + @user_show.votes.count + @user_show.unvotes.count %></h4>
 	        	</div>
 	        	<div class="col-xs-6" id="info-pri">
 	        		<h2><strong><%= @user_show.name %></strong></h2>
@@ -20,7 +30,7 @@
 	        			<p><%= markdown(@user_show.about)%></p>
 	        			<% else %>
 	        			<% if current_user == @user_show%>
-	        				<p><%= link_to "Agrega una descripcion tuya",edit_user_path(@user_show.username)  %></p>
+	        				<p><%= link_to "Agrega una descripción tuya",edit_user_path(@user_show.username)  %></p>
 	        			<% end %>
 	        			
 	        		<% end %>
@@ -79,7 +89,7 @@
 	    				<% if @user_show == current_user %>
 	    					<h4 class="text-center">Aun no tienes respuestas.</h4>
 						<% else %>
-							<h4 class="text-center"><strong>El usuario aun no ha respondido a ninguna pregunta.</strong> </h4>
+							<h4 class="text-center"><strong>El usuario aún no ha respondido a ninguna pregunta.</strong> </h4>
 	    				<% end %>
 	    				
 	    			<% else %>
@@ -100,7 +110,7 @@
 	    			<hr class="style2">
 	    			<% if @user_show.favorites.empty? %>
 	    				<% if @user_show == current_user %>
-	    					<h4 class="text-center">Aun no tienes ninguna pregunta como favortia.</h4>
+	    					<h4 class="text-center">Aun no tienes ninguna pregunta como favorita.</h4>
 						<% else %>
 							<h4 class="text-center"><strong>El usuario aun no ha respondido a ninguna pregunta.</strong> </h4>
 	    				<% end %>

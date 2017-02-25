@@ -1,3 +1,13 @@
+<% unless flash.blank? %>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="mensajes">
+        <%= render partial: 'layouts/messages', flash: flash %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="row" id="questions">
     <ul class="nav nav-tabs ">
         <li><h3>Questions</h3></li>

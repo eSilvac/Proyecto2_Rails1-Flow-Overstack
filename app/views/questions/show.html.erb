@@ -1,3 +1,13 @@
+<% unless flash.blank? %>
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
+    <div class="mensajes">
+      <%= render partial: 'layouts/messages', flash: flash %>
+    </div>
+  </div>
+</div>
+<% end %>
+
 <div class="row">
 	<div class="col-xs-12">
 		<h2><%= @question.title %></h2>
@@ -81,15 +91,17 @@
 
 
 				<div class="col-xs-12" id="form-comment">
-					
-					<div class="try" style="padding-top:10px;"><a name="link-comment" id="fun1" href="">Comentar</a>
-					</div>
 
-					<%= form_for [@question, @question.comments.new] do |com| %>
-						<div class="form-group">
-							<%= com.text_area :body, rows:"3", class: "form-control", id:"text", style:"display:none", placeholder: "Agrega tu Comentario" %>
+					<% if user_signed_in?%>
+						<div class="try" style="padding-top:10px;"><a name="link-comment" id="fun1" href="">Comentar</a>
 						</div>
-						<div class="text-right"><%= com.submit "Comentar", class:"btn",:name => 'submit', style:"display:none" %></div>		
+
+						<%= form_for [@question, Comment.new] do |com| %>
+							<div class="form-group">
+								<%= com.text_area :body, rows:"3", class: "form-control", id:"text", style:"display:none", placeholder: "Agrega tu Comentario" %>
+							</div>
+							<div class="text-right"><%= com.submit "Comentar", class:"btn",:name => 'submit', style:"display:none" %></div>		
+						<% end %>
 					<% end %>
 					
 				</div>
@@ -100,7 +112,7 @@
 
 		<div class="row" id="answer">
 			<div class="col-xs-12">
-				<h4> <%= @question.answers.count %> Answers</h4>
+				<h4> <%= @question.answers.count %> Respuestas</h4>
 			</div>
 			<hr class="style1">
 
@@ -160,8 +172,8 @@
 						</div>
 					<% end %>
 
-
-					<div class="col-xs-12" id="form-comment">	
+					<% if user_signed_in? %>
+						<div class="col-xs-12" id="form-comment">	
 						<%= form_for [@question, answer, answer.comments.new] do |com| %>
 							<% if @answe_newr && @answer.errors.any? %>
 							  <div class="alert alert-danger">
@@ -179,7 +191,9 @@
 							<div class="text-right"><%= com.submit "Comentar", class:"btn" %></div>		
 						<% end %>
 						
-					</div>
+						</div>
+					<% end %>
+					
 				</div>
 				
 				<hr class="style2">
@@ -187,7 +201,7 @@
 			<% end %>
 			
 			<div class="col-xs-12" id="form-answer">
-
+			<% if user_signed_in? %>
 				<h4>Tu Respuesta</h4>
 				<div class="sugerencia">
 					<p>Recuerda que puedes usar Markdown en tus respuestas, si quieres mas info de markdown, <%= link_to "entra aquí.", "https://learn.getgrav.org/content/markdown", :target => "_blank"%></p>
@@ -198,6 +212,8 @@
 					</div>
 					<div class="text-right"><%= ans.submit "Comentar", class:"btn" %></div>		
 				<% end %>
+			<% end %>
+				
 			</div>
 		</div>
 

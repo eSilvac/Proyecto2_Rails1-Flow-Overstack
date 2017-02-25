@@ -1,7 +1,9 @@
 <div class="row">
+	<% if @question.new_record? %>
 	<div class="col-xs-10 col-xs-offset-1" id="adv">
-		<p class="text-center">Recuerda que antes de publicar una pregunta, otros usuarios pudieron tener la misma duda, busca muy bien antes de pregutar!</p>
+	    	<p class="text-center">Recuerda que antes de publicar una pregunta, otros usuarios pudieron tener la misma duda, busca muy bien antes de preguntar!</p>
 	</div>
+	<% end %>
 </div>
 
 <div class="row" id="formulario">
@@ -35,16 +37,16 @@
 
 	<div class="col-xs-4 col-xs-offset-1" id="help">
 		<h3>Tips!</h3>
-		<p> <%= markdown("El area de texto soporta **Markdown**, así que aca tienes algunos concejos:") %></p>
+		<p> <%= markdown("El área de texto soporta **Markdown**, así que acá tienes algunos concejos:") %></p>
 		<ul>
 			<li><%= markdown("Si quieres **negrillas**, ** Pon la frase así **") %></li>
 			<li><%= markdown("Si quieres *curvas*, * Pon la frase así *")%></li>
 			<li><%= markdown("Si quieres _subrayar_, _ Pon la frase así _")%></li>
-			<li><%= markdown("**_Tambien puedes combinar_**,*_si lo necesitas_*")%></li>
-			<li><%= markdown("Si quieres `codigo`, Pon la frase así entre ` .")%></li>
+			<li><%= markdown("**_También puedes combinar_** ,*_si lo necesitas_*")%></li>
+			<li><%= markdown("Si quieres `código`, Pon la frase así entre `.")%></li>
 			<li><p>Si quieres un link, [Ejemplo](Ejemplo.com)</p></li>
-			<li>Si tienes muchas lineas de codigo: <br>```[Lenguaje del codigo] <br> <--Tu codigo--> <br> ```</li>
+			<li>Si tienes muchas líneas de código: <br>```[Lenguaje del código] <br> <--Tu código--> <br> ```</li>
 		</ul>
-		<p class="text-right"><%= link_to "Aca puedes encontrar mas opciones de markdown >>", "https://learn.getgrav.org/content/markdown", :target => "_blank"	 %></p>
+		<p class="text-right"><%= link_to "Acá puedes encontrar más opciones de markdown >>", "https://learn.getgrav.org/content/markdown", :target => "_blank"	 %></p>
 	</div>
 </div>
