@@ -10,7 +10,7 @@
 
 <div class="row" id="questions">
     <ul class="nav nav-tabs ">
-        <li><h3>Questions</h3></li>
+        <li><h3>Preguntas</h3></li>
 
         <li class="<%= params[:tab].present? ? params[:tab] == "new" ? "active right-to-left" : "right-to-left" : "active right-to-left" %>"><%= link_to "Mas nuevo", questions_path(tab:"new") %></li>
         <li class="<%=  params[:tab] == "vote" ? "active right-to-left" : "right-to-left" %>"><%= link_to "Mas Votado", questions_path(tab:"vote") %></li>

@@ -29,7 +29,13 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
       	<% if user_signed_in? %>
-            <li><%= link_to (image_tag (Gravatar.new("#{current_user.email}").image_url), height:"30x30"), user_path(current_user.username), class:"user-nav" %></li>
+            <li>
+            <% if current_user.image.exists? %>
+              <%= link_to (image_tag current_user.image.url, size:"30x30"), user_path(current_user.username), class:"user-nav" %>
+            <% else %>
+              <%= link_to (image_tag (Gravatar.new("#{current_user.email}").image_url), size:"30x30"), user_path(current_user.username), class:"user-nav" %>
+            <% end %> 
+            </li>
             <li><a class="inbox"><%= fa_icon "inbox lg" %></a></li>
       		<li><%= link_to "Salir", destroy_user_session_path, :method => :delete %></li>
       	<% else %>

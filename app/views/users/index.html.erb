@@ -19,12 +19,16 @@
         	<% @users.each do |usuario| %>
         		<div class="col-xs-3" id="usr">
         			<div class="col-xs-4">
-        				<%= link_to (image_tag (Gravatar.new("#{usuario.email}").image_url), height:"70x70"),user_path(usuario) %>
+                        <div class="text-center">
+                            <% if usuario.image.exists? %>
+                                <%= link_to (image_tag usuario.image.url, size:"70"), user_path(usuario.username)  %>
+                            <% else %>
+                              <%= link_to (image_tag (Gravatar.new("#{usuario.email}").image_url), size:"70"),user_path(usuario) %>
+                            <% end %>                             
+                        </div>
         			</div>
         			<div class="col-xs-8" id="usr-info">
         				<h4><%= link_to usuario.name, user_path(usuario.username) %></h4>
-        				
-        				<p><%= usuario.email %></p>
         				<p><strong><%= usuario.questions.count + usuario.answers.count + usuario.votes.count + usuario.unvotes.count %></strong></p>
         			</div>
         		</div>

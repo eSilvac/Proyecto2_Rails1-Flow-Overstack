@@ -16,6 +16,15 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  username               :string
+#  info                   :string
+#  github                 :string
+#  about                  :text
+#  twitterurl             :string
+#  name                   :string
+#  image_file_name        :string
+#  image_content_type     :string
+#  image_file_size        :integer
+#  image_updated_at       :datetime
 #
 
 class User < ApplicationRecord
@@ -30,9 +39,11 @@ class User < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :answers, dependent: :destroy
 
+  has_attached_file :image
+
 	validates :info, presence: true
   validates :name, presence: true
-
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   validates :username,
   :presence => true,
   :uniqueness => {

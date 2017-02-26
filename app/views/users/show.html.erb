@@ -20,7 +20,12 @@
     	<% if params[:tab] == "profile" || params[:tab] == nil  %>
 	    	<div id="first" class="tab-pane fade in active">
 	        	<div class="col-xs-3 text-center" id="image-rep">
-	        		<%= image_tag (Gravatar.new("#{@user_show.email}").image_url), height:"180x180" %>
+	        		<% if @user_show.image.exists? %>
+	        		  <%= image_tag @user_show.image.url, width:"80%" %>
+	        		<% else %>
+	        		  <%= image_tag (Gravatar.new("#{@user_show.email}").image_url), width:"80%" %>
+	        		<% end %> 
+	        		
 	        		<h4>Reputación: <%= @user_show.questions.count + @user_show.answers.count + @user_show.votes.count + @user_show.unvotes.count %></h4>
 	        	</div>
 	        	<div class="col-xs-6" id="info-pri">
