@@ -23,7 +23,7 @@
                             <% if usuario.image.exists? %>
                                 <%= link_to (image_tag usuario.image.url, size:"70"), user_path(usuario.username)  %>
                             <% else %>
-                              <%= link_to (image_tag (Gravatar.new("#{usuario.email}").image_url), size:"70"),user_path(usuario) %>
+                              <%= link_to (image_tag (Gravatar.new("#{usuario.email}").image_url), size:"70"),user_path(usuario.username) %>
                             <% end %>                             
                         </div>
         			</div>

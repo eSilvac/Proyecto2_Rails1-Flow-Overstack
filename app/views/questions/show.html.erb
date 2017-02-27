@@ -72,8 +72,11 @@
 
 				<div class="col-xs-3" id="post-user">
 					<p>Hace <%= time_ago_in_words(@question.created_at) %></p>
-
-					<p><%= link_to (image_tag (Gravatar.new("#{@question.user.email}").image_url), height:"25x25"), questions_path, class:"user-nav" %>  <%= @question.user.name %></p>
+						<% if @question.user.image.exists? %>
+						<p><%= link_to (image_tag @question.user.image.url, height:"25x25"), user_path(@question.user.username), class:"user-nav" %>  <%= @question.user.name %></p>
+						<% else %>
+						<p><%= link_to (image_tag (Gravatar.new("#{@question.user.email}").image_url), height:"25x25"), user_path(@question.user.username), class:"user-nav" %>  <%= @question.user.name %></p>
+					<% end %> 
 				</div>
 				
 				<hr class="style2">
@@ -143,7 +146,7 @@
 
 				<div class="col-xs-10" id="answer-body">
 					<div class="col-xs-12" id="post-body">
-						<p ><%= markdown(answer.body).html_safe %></p>
+						<p ><%= markdown(answer.body) %></p>
 					</div>
 					
 					<div class="col-xs-9" id="post-edit">

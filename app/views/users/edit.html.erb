@@ -1,6 +1,14 @@
 <div class="container" id="form-user">
     <%= form_for @user_edit do |f| %>
-        <div class="row">    
+        <div class="row">
+
+            <ul class="nav nav-tabs ">
+                <li><%= link_to "Perfil", user_path(@user_edit.username, tab:"profile") %></li>
+                <li><%= link_to "Actividad", user_path(@user_edit.username, tab:"activity") %></li>
+                
+                <li class="active"><%= link_to "Editar" %></li>
+            </ul>
+
             <h1 class="text-center">Editar Cuenta</h1>
             <br>
             <% if @user_edit.errors.any? %>

@@ -11,9 +11,8 @@ class QuestionsController < ApplicationController
         @questions = @questions.sort_by {|hsh| hsh.answers.count }.reverse
       end
       if params[:search].present? 
-        questions1 = @questions.where("title LIKE ?", "%#{params[:search]}%")
-        questions2 = @questions.where("body LIKE ?", "%#{params[:search]}%")
-        @questions = questions1 + questions2
+        questions1 = @questions.where("title LIKE ?", "%#{params[:search]}%") + @questions.where("body LIKE ?", "%#{params[:search]}%")
+        @questions = questions1.uniq
       end
   	end
 
