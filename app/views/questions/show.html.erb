@@ -86,7 +86,7 @@
 						<p><%= coment.body %> -- <%= coment.user.name %> |
 							<strong><%= time_ago_in_words(coment.created_at) %></strong>
 							<% if current_user == coment.user %>
-							    <%= link_to (fa_icon "trash-o"), question_comment_path(coment.question, coment), :method => :delete, class:"delete" %>
+							    <%= link_to (fa_icon "trash-o"), question_comment_path(coment.commentable, coment), :method => :delete, class:"delete" %>
 							<% end %>
 						</p>
 					</div>
@@ -177,7 +177,7 @@
 
 					<% if user_signed_in? %>
 						<div class="col-xs-12" id="form-comment">	
-						<%= form_for [@question, answer, answer.comments.new] do |com| %>
+						<%= form_for [@question, answer, Comment.new] do |com| %>
 							<% if @answe_newr && @answer.errors.any? %>
 							  <div class="alert alert-danger">
 							    <ul>

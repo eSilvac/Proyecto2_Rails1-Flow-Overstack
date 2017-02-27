@@ -4,23 +4,22 @@ class CommentsController < ApplicationController
 
         @question = Question.find(params[:question_id])
         @question.update(views:@question.views -= 1)
-        @comment = Comment.create(comment_params)
+
+        if params[:answer_id].present?
+            answer = Answer.find(params[:answer_id])
+            @comment = answer.comments.create(comment_params)
+        else
+            @comment = @question.comments.create(comment_params)
+        end
+
         if @comment.errors.any?
             @comment.errors.full_messages.each do |error|
                 flash[:error] = error
             end
-            redirect_to @question
         else
-           if params[:answer_id].present?
-                answer = Answer.find(params[:answer_id])
-                answer.comments << @comment
-            else
-                @question.comments << @comment
-            end
             flash[:success] = "Publicada Correctamente"
-            redirect_to @question
         end
-
+        redirect_to @question
     end
 
     def destroy

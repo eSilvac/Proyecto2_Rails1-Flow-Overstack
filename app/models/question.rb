@@ -12,9 +12,9 @@
 #
 
 class Question < ApplicationRecord
-	has_many :votes, dependent: :destroy
-	has_many :unvotes, dependent: :destroy
-	has_many :comments, dependent: :destroy
+	has_many :votes, as: :voteable, dependent: :destroy
+	has_many :unvotes, as: :unvoteable, dependent: :destroy
+	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	has_many :answers,dependent: :destroy
 
